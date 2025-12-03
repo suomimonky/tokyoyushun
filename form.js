@@ -51,10 +51,13 @@ function Form( { setAdminView }){
         isDuplicate = true;
       }
     });
-    if (!isDuplicate){
-    allSaved.unshift(submission);
-    saveSubmissions(allSaved);
+    if (!isDuplicate&&horses.length<=0){
+      allSaved.unshift(submission);
+      saveSubmissions(allSaved);
+    if (typeof setAdminView === "function") {
+      setAdminView(true);
     }
+  }
   }
   
 
@@ -67,9 +70,9 @@ function Form( { setAdminView }){
   const handleHorseCheckbox = (horseObj, isChecked) => {
 
     if (isChecked){
-      if (selectedHorses.length>=3){
-        alert("You can only select 3 horses");
-        // e.target.checked = false;
+      if (selectedHorses.length>=3||selectedHorses.length>=horseCount){
+        alert("You have selected too many horses");
+
       }
       else {
         setSelectedHorses([...selectedHorses, horseObj]);
