@@ -51,7 +51,7 @@ function Form( { setAdminView }){
         isDuplicate = true;
       }
     });
-    if (!isDuplicate&&horses.length<=0){
+    if (!isDuplicate){
       allSaved.unshift(submission);
       saveSubmissions(allSaved);
     if (typeof setAdminView === "function") {
